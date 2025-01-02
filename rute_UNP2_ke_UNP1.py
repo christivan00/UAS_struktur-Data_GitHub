@@ -1,5 +1,5 @@
-def astar_with_heuristic(graph, heuristic, start, goal):
-    open_list = [(start, 0)]  # (node, f_score)
+def A_star(graph, heuristic, start, goal):
+    open_list = [(start, 0)]  
     came_from = {}
     g_score = {node: float('inf') for node in graph}
     g_score[start] = 0
@@ -7,12 +7,12 @@ def astar_with_heuristic(graph, heuristic, start, goal):
     f_score[start] = heuristic[start] 
 
     while open_list:
-       
+
         current, _ = min(open_list, key=lambda x: f_score[x[0]])
         open_list = [item for item in open_list if item[0] != current]
 
         if current == goal:
-            # Rekonstruksi jalur
+            
             path = []
             while current in came_from:
                 path.append(current)
@@ -50,7 +50,7 @@ grafik = {
     'UNP_1': [('N', 3.1)]
 }
 
-# Definisi heuristik (estimasi jarak ke tujuan 'F')
+
 heuristic = {
     'UNP_2': 0,   
     'A': 3,       
@@ -73,7 +73,7 @@ heuristic = {
 
 start = 'UNP_2'
 goal = 'UNP_1'
-path = astar_with_heuristic(grafik, heuristic, start, goal)
+path = A_star(grafik, heuristic, start, goal)
 
 if path:
     print("Jalur ditemukan:", path)
