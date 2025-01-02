@@ -21,6 +21,27 @@ disampaikan di kelas, Silakan.
 algoritma  : A* (A-Star)
 penjelasan : Algoritma ini digunakan untuk mencari rute tercepat karena memanfaatkan heuristik (seperti jarak garis lurus atau Haversine) untuk mempercepat pencarian jalur.
             Menggabungkan:
-             >  Jarak aktual dari titik awal ke node saat ini.
+             >  Jarak aktual dari titik awal ke node saat ini.\
              >  Estimasi jarak dari node saat ini ke tujuan.
-             >  Cocok untuk peta karena menghitung rute berdasarkan jaringan jalan (graph-based).
+             >  Cocok untuk peta karena menghitung rute berdasarkagraphn jaringan jalan (graph-based).
+
+
+grafik = {
+    'UNP_2': [('A',0.4)]
+    'A': [('UNP_2',0.4),('B',3.5),('E',18.1)],
+    'B': [('A',3.5),('C',25.8),('D',36.9)],
+    'C': [('B',25.8),('D',19.2), ('F',15.3)],
+    'D': [('B',36,9),('E',7.5),('L',20.2)],
+    'E': [('A',18.1),('D',7.5),('F',14.5),('H',7.8)],
+    'F': [('E',14.5),('C',15.3),('G',10.8),('J',9.6),],
+    'G': [('C',19.2),('F',10.8),('I',10,0)],
+    'H': [('E',7.8),('J',13.6),('M',11.5)],
+    'I': [('G',13.0),('J',17.2),('N',10.4)],
+    'J': [('F',9.6),('I',17.2),('M',13.6),('K',9.1)],
+    'K': [('J',9.1),('M',14.0),('O',8.5)],
+    'L': [('M',2.9),('D',20.2),('O',14.6)],
+    'M': [('L',2.9),('K',14.0),('H',11.5)],
+    'N': [('I',10.4),('UNP_1',3.1),('O',23.3)],
+    'O': [('N',23.3),('K',8.5),('L',14.6)]
+    'UNP_1': [('N',3.1)]
+}
