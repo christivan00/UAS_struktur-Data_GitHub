@@ -1,0 +1,26 @@
+Buatlah google map sederhana dan tentukan rute serta jarak terpendek antar node / wilayah. Kalian bebas untuk
+menentukan node awal dan node tujuan. Bisa dari awal ditentukan node awal dan node tujuannya atau node awal
+dan node tujuan dapat diubah sesuai kebutuhan atau keinginan user
+
+Peta atau denah yang digunakan, terserah kalian. Asalkan,jangan membuat denah atau peta perjalanan kereta api,
+bus atau pesawat yang sudah ditentukan dimana stasiun, terminal dan bandaranya
+
+Algoritma untuk menentukan rute serta jarak terpendek, bebas. Apabila ingin memakai algoritma lain diluar yang
+disampaikan di kelas, Silakan.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+> judul : menentukan lintasan terpendek dari UNP kampus 2  ke UNP kampus 1
+> node awal : UNP kampus 2
+> node tujuan : UNP kampus 1
+> edged :  dekameter (dam)
+> lingkaran biru : persimpangan
+
+------------------------------------------------------------------------------------------------------------------------
+
+algoritma  : A* (A-Star)
+penjelasan : Algoritma ini digunakan untuk mencari rute tercepat karena memanfaatkan heuristik (seperti jarak garis lurus atau Haversine) untuk mempercepat pencarian jalur.
+            Menggabungkan:
+             >  Jarak aktual dari titik awal ke node saat ini.
+             >  Estimasi jarak dari node saat ini ke tujuan.
+             >  Cocok untuk peta karena menghitung rute berdasarkan jaringan jalan (graph-based).
