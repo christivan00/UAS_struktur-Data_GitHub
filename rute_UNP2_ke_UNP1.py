@@ -1,34 +1,35 @@
-def A_star(graph, heuristic, start, goal):
-    open_list = [(start, 0)]  
-    came_from = {}
-    g_score = {node: float('inf') for node in graph}
+def A_star(graph, heuristic, start, goal):                  # fungsi
+    open_list = [(start, 0)]                                # daftar node yang akan di periksa
+    came_from = {}                                          # dictionari
+    g_score = {node: float('inf') for node in graph}        # menyimpan jarak akatual terpendek  dari n strar ke n lainya
     g_score[start] = 0
-    f_score = {node: float('inf') for node in graph}
+    f_score = {node: float('inf') for node in graph}        # menyimpan nilai total 
     f_score[start] = heuristic[start] 
 
-    while open_list:
+    while open_list:                                        # akan berjalann jika masih ada node
+        
+        current, _ = min(open_list, key=lambda x: f_score[x[0]])        # memilih node dengan nilai f_scorce terendah      
+        open_list = [item for item in open_list if item[0] != current]  # menghapus node yang sudah di periksa
 
-        current, _ = min(open_list, key=lambda x: f_score[x[0]])
-        open_list = [item for item in open_list if item[0] != current]
-
-        if current == goal:
+        if current == goal:                                 # memeriksa apakah node yang sedang di periksa adalah 
             
-            path = []
-            while current in came_from:
-                path.append(current)
-                current = came_from[current]
-            path.append(start)
-            return path[::-1]
+            path = []                                       # menginisialisasi list kosong untuk menyimpan jalur
+            while current in came_from:                     # untuk menelusuri kembali jalur dari goal ke start
+                path.append(current)                        # menambahkan node saat ini ke jalur
+                current = came_from[current]                # mengupdate current ke node asal
+            path.append(start)                              # menambahkan node start ke jalur
+            return path[::-1]                               # mengembalikan jalur yang dibalik agar memulai dari start ke goal
 
-        for neighbor, weight in graph[current]:
-            tentative_g_score = g_score[current] + weight
-            if tentative_g_score < g_score[neighbor]:
-                g_score[neighbor] = tentative_g_score
-                f_score[neighbor] = tentative_g_score + heuristic[neighbor]
-                open_list.append((neighbor, f_score[neighbor]))
-                came_from[neighbor] = current
+        for neighbor, weight in graph[current]:             # iterasi memulai semua tetangga dari node current.
+            # setiap tetangga memiliki:
+            tentative_g_score = g_score[current] + weight   # bobot tepi dari current ke neighbor.
+            if tentative_g_score < g_score[neighbor]:       # nama node tetangga
+                g_score[neighbor] = tentative_g_score       # memperbarui skor g untuk tetangga
+                f_score[neighbor] = tentative_g_score + heuristic[neighbor] # memperbarui skor f untuk tetangga
+                open_list.append((neighbor, f_score[neighbor])) # menambahkan tetangga ke open_list untuk selanjutnya
+                came_from[neighbor] = current               # menyimpan node asal dari tetangga
 
-    return None 
+    return None                                             # mengembalkan nilai
 
 grafik = {
     'UNP_2': [('A', 0.4)],
