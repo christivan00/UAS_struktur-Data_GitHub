@@ -14,7 +14,7 @@ disampaikan di kelas, Silakan.
 > node awal : UNP kampus 2
 > node tujuan : UNP kampus 1
 > edged :  dekameter (dam)
-> lingkaran biru : persimpangan
+> lingkaran kuning : persimpangan
 
 ------------------------------------------------------------------------------------------------------------------------
 
